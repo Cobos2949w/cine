@@ -8,4 +8,4 @@ build:
       commands:
         - apt-get update && apt-get install -y --no-install-recommends unixodbc-dev
         - pip install -r requirements.txt
-      startCommand: gunicorn "app:crear_app()"  # Asumiendo que tu objeto Flask app se llama 'app' en app.py
+      startCommand: gunicorn app:app  # Asumiendo que tu objeto Flask app se llama 'app' en app.py
