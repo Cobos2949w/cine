@@ -534,8 +534,10 @@ def crear_app():
             return "Correo de error enviado (si todo salió bien)"
 
     return app
+
+app = crear_app()
+
 # Ejecutar la aplicación
 if __name__ == '__main__':
     print("Iniciando aplicación Flask...")
-    app = crear_app()
     app.run(debug=True, use_reloader=False)
