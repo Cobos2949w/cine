@@ -2,10 +2,12 @@ version: 1
 build:
   services:
     - type: web
-      name: Cine Cobos  # Reemplaza CON EL NOMBRE EXACTO DE TU SERVICIO WEB EN RENDER
+      name: Cine Cobos  # Asegúrate de que coincida con el nombre exacto de tu servicio web en Render
       env: python
-      image: python:3.11  # Asegúrate de que la versión de Python coincida con tu entorno local y la configuración de Render
+      image: python:3.11  # Asegúrate de que la versión de Python coincida
       commands:
         - apt-get update && apt-get install -y --no-install-recommends unixodbc-dev
+        - python -m venv .venv
+        - source .venv/bin/activate
         - pip install -r requirements.txt
-      startCommand: gunicorn app:app  # Asumiendo que tu objeto Flask app se llama 'app' en app.py
+      startCommand: gunicorn app:app
