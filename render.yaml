@@ -1,17 +1,13 @@
 version: 1
 build:
-services:
-  - type: web
-    name: cine-flask-app  # Asegúrate de que coincida con el nombre de tu servicio en Render
-    runtime: python
-    buildCommand: |
-      python -m venv .venv
-      source .venv/bin/activate
-      pip install -r requirements.txt
-    startCommand: gunicorn app:app
-    envVars:
-      - key: MONGO_URI
-        value: "mongodb+srv://cobos:dormilon00@ivan.az0bu.mongodb.net/?appName=Ivan"  # Reemplaza con tu URI real
-      - key: MONGO_DATABASE
-        value: "cine_db_mongo" # Reemplaza con el nombre de tu base de datos
-      # ... otras variables de entorno ...
+  services:
+    - type: web
+      name: Cine Cobos
+      env: python
+      image: python:3.11
+      commands:
+        - apt-get update && apt-get install -y --no-install-recommends unixodbc-dev
+        - python -m venv .venv
+        - source .venv/bin/activate
+        - pip install -r requirements.txt
+      startCommand: gunicorn app:app
